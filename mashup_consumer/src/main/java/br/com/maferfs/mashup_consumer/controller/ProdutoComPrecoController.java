@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
 public class ProdutoComPrecoController {
 
     @Autowired
@@ -18,6 +17,7 @@ public class ProdutoComPrecoController {
 
     @GetMapping("/produto/{codigo}/preco")
     public ResponseEntity<ProdutoComPreco> obterProdutoComPreco(@PathVariable Long codigo){
+
         ProdutoComPreco produtoComPreco = this.precoProdutoService.obterPorCodigo(codigo);
 
         return ResponseEntity.ok(produtoComPreco);

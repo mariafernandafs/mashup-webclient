@@ -13,12 +13,6 @@ public class ProdutoController {
     public ResponseEntity<Produto> obterProduto(@PathVariable String codigo) {
         Produto produto = new Produto(codigo,"ventilador", "ventila demais");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         return ResponseEntity.ok(produto);
     }
 

@@ -25,12 +25,28 @@ public class PrecoProdutoService {
                 .retrieve()//dispara a requisição
                 .bodyToMono(ProdutoComPreco.class);
 
-        monoProduto.subscribe(p ->{
-            System.out.println("Agora sim finalizou de verdade");
-        });
+        Mono<ProdutoComPreco> monoPreco = this.webclientPrecos
+                .method(HttpMethod.GET)
+                .uri("/precos/{codigo}", codigoProduto)
+                .retrieve()//dispara a requisição
+                .bodyToMono(ProdutoComPreco.class);
 
-        System.out.println("Terminou Jéssica?!");
 
-        return null;
+//        monoProduto.subscribe(p ->{
+//            System.out.println("Agora sim finalizou de verdade");
+//        });
+//
+//        System.out.println("Terminou Jéssica?!");
+//
+//        ProdutoComPreco produto = monoProduto.block();
+//        ProdutoComPreco preco = monoPreco.block();
+//        produto.setPreco(preco.getPreco());
+
+        ProdutoComPreco produtoComPreco = Mono.zip(monoProduto, monoPreco).map(tuple -> {
+            tuple.getT1().setPreco(tuple.getT2().getPreco());
+            return tuple.getT1();
+        }).block();
+
+        return produtoComPreco;
     }
 }
