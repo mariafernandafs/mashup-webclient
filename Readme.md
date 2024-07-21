@@ -7,6 +7,11 @@ O projeto consiste em uma aplicação Spring Boot que consome duas APIs:
     API de Produtos: Retorna informações sobre produtos.
     API de Preços: Retorna informações sobre os preços dos produtos.
 
+![image](https://github.com/user-attachments/assets/cca34f3c-64e4-46a3-8ad7-a4ad99057ffd)
+![image](https://github.com/user-attachments/assets/57c0639a-5df6-447b-9d21-24ba7b680dfb)
+![image](https://github.com/user-attachments/assets/d89f6a68-5afb-45f1-9fe7-22251dd06c3a)
+
+
 A aplicação utiliza dois beans do WebClient configurados para se comunicar com cada uma das APIs. As requisições são realizadas de forma assíncrona e os resultados são combinados usando Mono.zip() para formar a resposta final. A aplicação usa o método block() para esperar as requisições e retornar os dados combinados.
 Estrutura do Projeto
 # 1. Configuração do WebClient
