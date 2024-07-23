@@ -15,8 +15,8 @@ O projeto consiste em uma aplicação Spring Boot que consome duas APIs:
 A aplicação utiliza dois beans do WebClient configurados para se comunicar com cada uma das APIs. As requisições são realizadas de forma assíncrona e os resultados são combinados usando Mono.zip() para formar a resposta final. A aplicação usa o método block() para esperar as requisições e retornar os dados combinados.
 Estrutura do Projeto
 # 1. Configuração do WebClient
-```
-   @Configuration
+```java
+@Configuration
 public class WebClientConfig {
 
     @Bean
@@ -37,7 +37,7 @@ public class WebClientConfig {
 }
 ```
 # 2. Serviço de Preço e Produto
-```
+```java
 @Service
 public class PrecoProdutoService {
     @Autowired
